@@ -1,8 +1,17 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    ctx = {
+        "greetings": "Hello, three!",
+        "location": {
+            "city": "Seoul",
+            "country": "South Korea",
+        },
+        "languages": ["Korean", "English"],
+    }
+    return render(request, "polls/main.html", context=ctx)
 
 
 def detail(request, question_id):
