@@ -11,3 +11,6 @@ urlpatterns = [
     path("<int:question_id>/results/", views.results, name="results"),
     path("<int:question_id>/vote/", views.vote, name="vote"),
 ]
+
+handler404 = "app.views.error_404_view"
+handler500 = "app.views.error_500_view"
