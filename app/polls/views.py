@@ -1,17 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader  # noqa example
+from polls.models import Question
+
+# HTTP Response를 이용한 방법(잘 사용안함 코드가 길어짐.)
+# def index(request):
+#     latest_question_list = Question.objects.order_by("-pub_date")[:5]
+#     template = loader.get_template("polls/index.html")
+#     context = {
+#         "latest_question_list": latest_question_list,
+#     }
+#     return HttpResponse(template.render(context, request))
 
 
+# render를 이용한 방법(자주사용함.)
 def index(request):
-    ctx = {
-        "greetings": "Hello, three!",
-        "location": {
-            "city": "Seoul",
-            "country": "South Korea",
-        },
-        "languages": ["Korean", "English"],
-    }
-    return render(request, "polls/main.html", context=ctx)
+    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    context = {"latest_question_list": latest_question_list}
+    return render(request, "polls/index.html", context)
 
 
 def detail(request, question_id):
