@@ -4,6 +4,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader  # noqa example
 from django.urls import reverse
 from polls.models import Question, Choice
+from polls.forms import SurveyForm
 
 # HTTP Response를 이용한 방법(잘 사용안함 코드가 길어짐.)
 # def index(request):
@@ -57,3 +58,20 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+
+
+def survey(request):
+    if request.method == "POST":
+        form = SurveyForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data["user_name"])
+            print(form.cleaned_data["user_age"])
+            return HttpResponseRedirect(reverse("polls:thanks"))
+    else:
+        form = SurveyForm()
+
+    return render(request, "polls/survey_custom.html", {"form": form})
+
+
+def thanks(request):
+    return render(request, "polls/thanks.html", {})

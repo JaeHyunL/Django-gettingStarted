@@ -16,12 +16,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from app import views
+from polls import views
+
+app_name = "polls"
 
 urlpatterns = [
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
     path("", views.index),
+    # /polls/survey/로 접속했을 때, views.survey 함수를 실행하도록 설정
+    path("polls/survey/", views.survey, name="survey"),
+    path("polls/thanks/", views.thanks, name="thanks"),
 ]
 
 handler404 = "app.views.error_404_view"
