@@ -16,17 +16,22 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from polls import views
+
+# from dealershop import views as delar_views
+from inventory import views as inventory_views
+from polls import views as polls_views
 
 app_name = "polls"
 
 urlpatterns = [
     path("polls/", include("polls.urls")),
+    path("inventory/", include("inventory.urls")),
     path("admin/", admin.site.urls),
-    path("", views.index),
+    path("", polls_views.index),
     # /polls/survey/로 접속했을 때, views.survey 함수를 실행하도록 설정
-    path("polls/survey/", views.survey, name="survey"),
-    path("polls/thanks/", views.thanks, name="thanks"),
+    path("polls/survey/", polls_views.survey, name="survey"),
+    path("polls/thanks/", polls_views.thanks, name="thanks"),
+    # path("inventory/", inventory_views.MainView.as_view(), name="main"),
 ]
 
 handler404 = "app.views.error_404_view"
