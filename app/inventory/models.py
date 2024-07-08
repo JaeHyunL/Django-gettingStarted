@@ -8,6 +8,12 @@ class Car(models.Model):
     color = models.CharField(max_length=200)
     year = models.IntegerField(default=1900)
 
+    def __str__(self):
+        return f"{self.brand} {self.model} {self.year} {self.color}"
+
+    class Meta:
+        ordering = ["-year"]
+
 
 class Inventory(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)

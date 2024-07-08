@@ -1,0 +1,8 @@
+<h1>Cars</h1>
+<ul>
+    {% for car in object_list %}
+    <li> <a href="{% url "inventory:car-detail" car.id %}"> {{car.brand}}: {{car.model}} {{car.color}} {{car.year}} <a/> </li>
+    {% empty %}
+    <li>No cars in the inventory</li>
+    {% endfor %}
+</ul>

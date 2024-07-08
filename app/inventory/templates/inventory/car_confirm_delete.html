@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <p> {{object}} 진짜 지울꺼야?  </p>
+    {{ form.as_div }}
+    <input type="submit" value="Confirm">
+</form>
