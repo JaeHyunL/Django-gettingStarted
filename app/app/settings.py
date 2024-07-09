@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "inventory.apps.InventoryConfig",
     "dealershop.apps.DealershopConfig",
+    "todo_list",
+    "todo_app",
+    # "todo_list.apps.TodoListConfig",
+    # "todo_app.apps.TodoAppConfig",
 ]
 
 MIDDLEWARE = [
