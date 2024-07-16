@@ -30,4 +30,5 @@ urlpatterns = [
         name="car-delete",
     ),
     path("", RedirectView.as_view(url="/inventory")),
+    path("fbv", inventory_views.fbv_view, name="fbv"),
 ]

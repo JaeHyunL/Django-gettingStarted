@@ -6,10 +6,18 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils import timezone
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from inventory.models import Car
 from inventory.forms import CarForm
+
+
+@login_required
+def fbv_view(request):
+    context = {"name": "JaeHyunL"}
+    return render(request, "inventory/fbv.html", context)
 
 
 # 이러한 방식을 CBV Class Based View라고 한다.
@@ -42,7 +50,7 @@ class CarCreateView(CreateView):
         return super().form_valid(form)
 
 
-class CarListView(ListView):
+class CarListView(LoginRequiredMixin, ListView):
     model = Car
     paginate_by = 100
 

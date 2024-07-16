@@ -16,16 +16,19 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic.base import RedirectView
+from django.contrib.auth import views as auth_views
 
 #
 # from dealershop import views as delar_views
 from inventory import views as inventory_views
-from polls import views as polls_views
+
+# from polls import views as auth_views
 
 app_name = "polls"
 
 urlpatterns = [
-    path("", include("todo_app.urls")),
+    # path("", include("todo_app.urls")),
     # path("polls/", include("polls.urls")),
     # path("inventory/", include("inventory.urls")),
     path("admin/", admin.site.urls),
@@ -33,7 +36,13 @@ urlpatterns = [
     # /polls/survey/로 접속했을 때, views.survey 함수를 실행하도록 설정
     # path("polls/survey/", polls_views.survey, name="survey"),
     # path("polls/thanks/", polls_views.thanks, name="thanks"),
-    # path("inventory/", inventory_views.MainView.as_view(), name="main"),
+    path("", RedirectView.as_view(url="/inventory")),
+    # path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/login/", auth_views.LoginView.as_view()),
+    path("change-accounts/logout/", auth_views.PasswordChangeView.as_view()),
+    # path("accounts/login", include("django.contrib.auth.urls"), name="login"),
+    # path("accounts/logout", include("django.contrib.auth.urls"), name="logout"),
+    path("inventory/", inventory_views.MainView.as_view(), name="main"),
 ]
 
 handler404 = "app.views.error_404_view"
