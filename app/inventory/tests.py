@@ -1,5 +1,5 @@
 from django.test import TestCase
-from return_hello import hello
+from .return_hello import hello
 
 
 # Create your tests here.
