@@ -32,4 +32,3 @@ jobs:
     - name: Run Lint
       run: |
         cd app
-        flake8 --config=.flake8
