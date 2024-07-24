@@ -32,4 +32,4 @@ jobs:
     - name: Run Lint
       run: |
         cd app
-        flake 8
+        flake8
