@@ -31,5 +31,5 @@ jobs:
         python manage.py test
     - name: Run Lint
       run: |
-        cd app
-        flake8
+      cd app
+      flake8 --config=.flake8
