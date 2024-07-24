@@ -1,6 +1,6 @@
 from django.urls import path
 from django.views.generic.base import RedirectView
-
+from .greet import greeting
 from . import views as inventory_views
 
 app_name = "inventory"
@@ -31,4 +31,5 @@ urlpatterns = [
     ),
     path("", RedirectView.as_view(url="/inventory")),
     path("fbv", inventory_views.fbv_view, name="fbv"),
+    path("greeting/", greeting, name="greeting"),
 ]
