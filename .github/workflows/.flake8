@@ -1,0 +1,4 @@
+[flake8]
+ignore = E501
+exclude = .git,__pycache__, manage.py, settigns.py
+max-line-length = 120
