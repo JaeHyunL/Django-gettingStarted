@@ -13,6 +13,8 @@ def say_hello():
 
 
 def get_today():
+    from datetime import date
+
     return date.today()
 
 
