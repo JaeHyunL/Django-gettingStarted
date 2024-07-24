@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 #
 # from dealershop import views as delar_views
@@ -31,6 +36,17 @@ urlpatterns = [
     # path("", include("todo_app.urls")),
     # path("polls/", include("polls.urls")),
     # path("inventory/", include("inventory.urls")),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "api/schema/swagger-ui/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "api/schema/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
     path("admin/", admin.site.urls),
     # path("", polls_views.index),
     # /polls/survey/로 접속했을 때, views.survey 함수를 실행하도록 설정

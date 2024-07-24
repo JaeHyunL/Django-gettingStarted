@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "drf_spectacular",
+    "rest_framework",
     "polls.apps.PollsConfig",
     "inventory.apps.InventoryConfig",
     "dealershop.apps.DealershopConfig",
@@ -88,7 +90,15 @@ DATABASES = {
     }
 }
 
-
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Polls API",
+    "DESCRIPTION": "Polls API made with Django Rest Framework",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
