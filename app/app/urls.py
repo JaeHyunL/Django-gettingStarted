@@ -36,6 +36,7 @@ urlpatterns = [
     # path("", include("todo_app.urls")),
     # path("polls/", include("polls.urls")),
     # path("inventory/", include("inventory.urls")),
+    path("", include("snippets.urls")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "api/schema/swagger-ui/",
@@ -52,7 +53,7 @@ urlpatterns = [
     # /polls/survey/로 접속했을 때, views.survey 함수를 실행하도록 설정
     # path("polls/survey/", polls_views.survey, name="survey"),
     # path("polls/thanks/", polls_views.thanks, name="thanks"),
-    path("", RedirectView.as_view(url="/inventory")),
+    # path("", RedirectView.as_view(url="/inventory")),
     # path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/login/", auth_views.LoginView.as_view()),
     path("change-accounts/logout/", auth_views.PasswordChangeView.as_view()),

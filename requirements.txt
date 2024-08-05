@@ -2,3 +2,5 @@ drf-spectacular==0.25.1
 django==4.1.5
 djangorestframework==3.14.0
 flake8==6.0.0
+pygments==2.18.0
+httpie

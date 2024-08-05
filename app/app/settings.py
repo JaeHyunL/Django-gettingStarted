@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "dealershop.apps.DealershopConfig",
     "todo_list",
     "todo_app",
+    "snippets",
     # "todo_list.apps.TodoListConfig",
     # "todo_app.apps.TodoAppConfig",
 ]
