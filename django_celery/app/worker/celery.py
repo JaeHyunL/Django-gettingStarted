@@ -1,0 +1,25 @@
+import os
+
+from celery import Celery
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
+
+app = Celery("app")
+
+app.config_from_object("django.conf:settings", namespace="CELERY")
+
+"""
+looking for all the tasks like blow:
+- app1/
+    - tasks.py
+    - models.py
+- app2/
+    - tasks.py
+    - models.py
+"""
+app.autodiscover_tasks()
+
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f"Request: {self.request!r}")
